@@ -6,7 +6,8 @@
     "category": "report",
     "date": "2024-08-15",
     "description": "Simulation-based look at how the ideal gas law emerges from particle-level dynamics.",
-    "url": "https://guiposchew.github.io/pdfs/ideal_gas.pdf"
+    "url": "https://guiposchew.github.io/pdfs/ideal_gas.pdf",
+    "thumbnail": "assets/images/ideal_gas.gif"
   },
   {
     "id":"02",
@@ -15,7 +16,8 @@
     "category": "report",
     "date": "2025-03-10",
     "description": "An essay on the correspondence principle and where classical behaviour re-emerges.",
-    "url": "https://guiposchew.github.io/pdfs/Correspondence_Principle.pdf"
+    "url": "https://guiposchew.github.io/pdfs/Correspondence_Principle.pdf",
+    "thumbnail": "assets/images/oom.pdf"
   },
   {
     "id":"03",
@@ -24,7 +26,8 @@
     "category": "report",
     "date": "2026-07-07",
     "description": "A summary of the contents and simulations from the Introduction to Computer Simualtion II couse.",
-    "url": "https://guiposchew.github.io/pdfs/Report_Comp_Sim_II.pdf"
+    "url": "https://guiposchew.github.io/pdfs/Report_Comp_Sim_II.pdf",
+    "thumbnail": "assets/images/comp_sim_ii.png"
   },
   {
     "id":"04",
@@ -33,6 +36,7 @@
     "category": "report",
     "date": "2025-07-10",
     "description": "A summary of the Electronic experiments done at the Labs II course.",
-    "url": "https://guiposchew.github.io/pdfs/Report_Electronic_Labs.pdf"
+    "url": "https://guiposchew.github.io/pdfs/Report_Electronic_Labs.pdf",
+    "thumbnail": "assets/images/e_lab.png"
   }
 ]

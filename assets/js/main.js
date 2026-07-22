@@ -96,9 +96,14 @@
   }
 
   function createDocListItem(item, position) {
+    const thumbMarkup = item.thumbnail
+      ? `<img src="${item.thumbnail}" alt="Thumbnail for ${item.title}" loading="lazy" />`
+      : `<div class="doc-thumb-fallback">PDF</div>`;
+
     return `
       <li class="doc-item">
         <span class="doc-no">${String(position).padStart(2, "0")}</span>
+        <div class="doc-thumb">${thumbMarkup}</div>
         <div class="doc-body">
           <span class="course-tag">${item.course}</span>
           <h3>${item.title}</h3>
