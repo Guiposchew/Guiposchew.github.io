@@ -87,6 +87,7 @@
 // Document & Project Loader
 (function () {
   const dataPath = "assets/data/projects.json";
+  console.info("assets/js/main.js loaded: starting document loader");
 
   function formatDate(dateString) {
     const date = new Date(dateString);
