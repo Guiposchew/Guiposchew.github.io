@@ -270,15 +270,15 @@ section.block + section.block { border-top: 1px solid var(--line); }
 .doc-list { list-style: none; margin: 0; padding: 0; }
 .doc-item {
   border-bottom: 1px solid var(--line);
-  padding: 22px 0;
+  padding: 18px 0;
   display: grid;
-  grid-template-columns: 90px 90px minmax(0, 1fr) auto;
-  gap: 18px;
+  grid-template-columns: 42px 72px minmax(0, 1fr) auto;
+  gap: 16px;
   align-items: start;
 }
 .doc-item:first-child { border-top: 1px solid var(--line); }
 @media (max-width: 840px) {
-  .doc-item { grid-template-columns: 90px minmax(0, 1fr); gap: 12px; }
+  .doc-item { grid-template-columns: 42px 72px minmax(0, 1fr); gap: 12px; }
 }
 @media (max-width: 640px) {
   .doc-item { grid-template-columns: 1fr; gap: 8px; }
@@ -290,8 +290,9 @@ section.block + section.block { border-top: 1px solid var(--line); }
   padding-top: 4px;
 }
 .doc-thumb {
-  width: 90px;
-  min-width: 90px;
+  width: 72px;
+  min-width: 72px;
+  height: 72px;
   border-radius: 4px;
   overflow: hidden;
   background: linear-gradient(180deg, #f9fafb, #e8ecef);
@@ -301,7 +302,8 @@ section.block + section.block { border-top: 1px solid var(--line); }
 }
 .doc-thumb img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
 }
 .doc-thumb-fallback {
@@ -310,7 +312,7 @@ section.block + section.block { border-top: 1px solid var(--line); }
   display: grid;
   place-items: center;
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   color: var(--ink-faint);
   text-transform: uppercase;
   letter-spacing: 0.08em;
