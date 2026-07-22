@@ -95,9 +95,18 @@
     return date.toLocaleDateString(undefined, { year: "numeric", month: "short" });
   }
 
+  function resolveAssetPath(path) {
+    if (!path) return path;
+    if (path.startsWith("/") || path.startsWith("http://") || path.startsWith("https://")) {
+      return path;
+    }
+    return path.replace(/^\.?\/?assets\//, "/assets/");
+  }
+
   function createDocListItem(item, position) {
-    const thumbMarkup = item.thumbnail
-      ? `<img src="${item.thumbnail}" alt="Thumbnail for ${item.title}" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('broken');" />`
+    const thumbSrc = resolveAssetPath(item.thumbnail);
+    const thumbMarkup = thumbSrc
+      ? `<img src="${thumbSrc}" alt="Thumbnail for ${item.title}" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('broken');" />`
       : "";
 
     return `
