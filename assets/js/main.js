@@ -192,7 +192,7 @@ function hydratePage(data) {
   }
 
   function showError() {
-    renderList("recent-docs-list", "recent-count", [], "Unable to load recent projects.");
+    renderList("recent-docs-list", "recent-count", [], "Unable to load recent reports.");
     renderList("report-docs-list", "report-count", [], "Unable to load reports.");
     renderProjects("project-card-grid", "project-count", [], "Unable to load project documents.");
   }
