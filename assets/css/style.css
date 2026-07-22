@@ -300,14 +300,7 @@ section.block + section.block { border-top: 1px solid var(--line); }
   display: grid;
   place-items: center;
 }
-.doc-thumb.broken::after {
-  content: "PDF";
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--ink-faint);
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
+
 .doc-thumb img {
   width: 100%;
   height: 100%;
