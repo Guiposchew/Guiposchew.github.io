@@ -1,0 +1,38 @@
+[
+  {
+    "id":"01",
+    "title": "Ideal Gas Law — Molecular Dynamics",
+    "course": "Computational Based Physics Modeling",
+    "category": "report",
+    "date": "2024-08-15",
+    "description": "Simulation-based look at how the ideal gas law emerges from particle-level dynamics.",
+    "url": "https://guiposchew.github.io/pdfs/ideal_gas.pdf"
+  },
+  {
+    "id":"02",
+    "title": "Exploration into the boundary between Quantum and Classical physics",
+    "course": "Order of Magnitude Physics ",
+    "category": "report",
+    "date": "2025-03-10",
+    "description": "An essay on the correspondence principle and where classical behaviour re-emerges.",
+    "url": "https://guiposchew.github.io/pdfs/Correspondence_Principle.pdf"
+  },
+  {
+    "id":"03",
+    "title": "Final Report for Introduction to Computer Simulation II",
+    "course": "Introduction to Computer Simulation II",
+    "category": "report",
+    "date": "2026-07-07",
+    "description": "A summary of the contents and simulations from the Introduction to Computer Simualtion II couse.",
+    "url": "https://guiposchew.github.io/pdfs/Report_Comp_Sim_II.pdf"
+  },
+  {
+    "id":"04",
+    "title": "Final Report from the Electronic segment of the Laboratory II course",
+    "course": "Labs II",
+    "category": "report",
+    "date": "2025-07-10",
+    "description": "A summary of the Electronic experiments done at the Labs II course.",
+    "url": "https://guiposchew.github.io/pdfs/Report_Electronic_Labs.pdf"
+  }
+]

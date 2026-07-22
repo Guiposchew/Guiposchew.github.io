@@ -44,61 +44,14 @@
   <section class="block">
     <div class="section-head">
       <h2>Coursework &amp; independent work</h2>
-      <span class="tally">placeholder entries</span>
+      <span class="tally" id="project-count">Loading...</span>
     </div>
 
-    <div class="card-grid">
+    <div class="card-grid" id="project-card-grid">
       <div class="card placeholder">
-        <span class="tag">Computational Physics</span>
-        <h3>Project title goes here</h3>
-        <p>
-          One or two sentences on the physical question the project addresses,
-          the method used (e.g. molecular dynamics, Monte Carlo, FDTD), and the
-          headline result.
-        </p>
-        <span class="meta">Course / term · Python</span>
-        <a class="card-link" href="#">
-          View write-up ↗
-        </a>
-      </div>
-
-      <div class="card placeholder">
-        <span class="tag">Experimental</span>
-        <h3>Project title goes here</h3>
-        <p>
-          Describe the apparatus or measurement, what was being tested, and
-          any notable source of error you had to account for.
-        </p>
-        <span class="meta">Course / term · Lab</span>
-        <a class="card-link" href="#">
-          View write-up ↗
-        </a>
-      </div>
-
-      <div class="card placeholder">
-        <span class="tag">Independent</span>
-        <h3>Project title goes here</h3>
-        <p>
-          Space for a self-directed project — something built outside of a
-          course requirement, with a link to its repository or PDF.
-        </p>
-        <span class="meta">Personal project · Ongoing</span>
-        <a class="card-link" href="#">
-          View repository ↗
-        </a>
-      </div>
-
-      <div class="card placeholder">
-        <span class="tag">Computational Physics</span>
-        <h3>Project title goes here</h3>
-        <p>
-          A fourth slot, ready for another project — delete it if you only
-          have three, or duplicate the card markup for more.
-        </p>
-        <span class="meta">Course / term · C++</span>
-        <a class="card-link" href="#">
-          View write-up ↗
-        </a>
+        <span class="tag">No project entries yet</span>
+        <h3>Project PDFs will appear here when added</h3>
+        <p>Add new entries to <code>assets/data/projects.json</code> and place the PDF in <code>/pdfs/</code>.</p>
       </div>
     </div>
   </section>
@@ -114,6 +67,5 @@
   </div>
 </footer>
 
-<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
-</body>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>  <script src="assets/js/main.js"></script></body>
 </html>
