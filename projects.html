@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Projects — Guilherme Schewtschik</title>
-<meta name="description" content="University physics projects by Guilherme Schewtschik." />
+<title>Essays &amp; Reports — Guilherme Schewtschik</title>
+<meta name="description" content="Essays and lab reports by Guilherme Schewtschik, physics student." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -17,41 +17,36 @@
     <a class="brand" href="index.html">Guilherme Schewtschik <small>PHYSICS</small></a>
     <nav class="links">
       <a href="index.html">Home</a>
-      <a href="projects.html" aria-current="page">Projects</a>
-      <a href="reports.html">Essays &amp; Reports</a>
+      <a href="projects.html">Projects</a>
+      <a href="reports.html" aria-current="page">Essays &amp; Reports</a>
     </nav>
   </div>
 </header>
 
 <main>
   <div class="page-intro">
-    <span class="eyebrow">University projects</span>
-    <h1>Projects</h1>
+    <span class="eyebrow">Essays &amp; reports</span>
+    <h1>Essays &amp; Reports</h1>
     <p>
-      Longer-form work built over a semester or independently — simulations, small
-      instruments, and code written to answer a specific physical question rather
-      than to complete a single lab report.
-    </p>
-    <p class="note">
-      This page is driven by <code>assets/data/projects.json</code>. Add entries with
-      <code>"category": "project"</code> and store the PDF in <code>/pdfs/</code>.
-      The page will update automatically when you add new project documents.
+      Write-ups from coursework and independent study — simulation reports,
+      lab summaries, and essays exploring specific physics questions. Each
+      entry opens the original PDF.
     </p>
   </div>
 
   <section class="block">
     <div class="section-head">
-      <h2>Coursework &amp; independent work</h2>
-      <span class="tally" id="project-count">Loading...</span>
+      <h2>All documents</h2>
+      <span class="tally" id="report-count">Loading...</span>
     </div>
 
-    <div class="card-grid" id="project-card-grid">
-      <div class="card placeholder">
-        <span class="tag">No project entries yet</span>
-        <h3>Project PDFs will appear here when added</h3>
-        <p>Add new entries to <code>assets/data/projects.json</code> and place the PDF in <code>/pdfs/</code>.</p>
-      </div>
-    </div>
+    <ul class="doc-list" id="report-docs-list">
+      <li class="doc-item doc-placeholder">
+        <div class="doc-body">
+          <h3>Loading essays and reports…</h3>
+        </div>
+      </li>
+    </ul>
   </section>
 </main>
 
