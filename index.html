@@ -1,20 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Portfolio</title>
-    <style>
-        body { font-family: sans-serif; max-width: 800px; margin: 40px auto; }
-        a { display: block; margin: 10px 0; font-size: 1.1em; }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Guilherme Schewtschik — Physics Portfolio</title>
+<meta name="description" content="Portfolio of Guilherme Schewtschik — physics student. University projects, essays and lab reports." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
+
+<header class="site">
+  <div class="nav-row">
+    <a class="brand" href="index.html">Guilherme Schewtschik <small>PHYSICS</small></a>
+    <nav class="links">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="reports.html">Essays &amp; Reports</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero">
+    <div class="hero-canvas-wrap">
+      <span class="readout">CH1 · live trace</span>
+      <canvas id="scope" aria-hidden="true"></canvas>
+    </div>
+
+    <span class="eyebrow">Physics student · undergraduate</span>
     <h1>Guilherme Schewtschik</h1>
-    <h2><h2>
-    <h3>Reports</h3>
-    <a href="pdfs/ideal_gas.pdf">Ideal Gas Law — Molecular Dynamics</a>
-    <a href="pdfs/Correspondence_Principle.pdf">Exploration into the boundary between Quantum and Classical physics</a>
-    <a href="pdfs/Report_Electronic_Labs.pdf">Final Report from the Electronic Laboratories</a>
-    <a href="pdfs/All_reports_Comp_Sim_II.pdf">Merged Reports from the Computer Simulation II course</a>
-    <a href="pdfs/Report_Comp_Sim_II.pdf">Final summary report for the Computer Simulation II course</a>
+    <p class="role">Molecular dynamics · quantum foundations · computational physics</p>
+    <p class="lede">
+      I study physics and spend most of my time somewhere between a lab bench and a
+      terminal — running simulations, writing up experiments, and trying to get the
+      classical and quantum pictures of the world to agree with each other. This site
+      collects the reports, essays and projects that came out of that work.
+    </p>
+    <div class="cta-row">
+      <a class="btn primary" href="reports.html">Read the reports</a>
+      <a class="btn" href="projects.html">See projects</a>
+    </div>
+  </div>
+
+  <section class="block">
+    <div class="section-head">
+      <h2>About</h2>
+    </div>
+    <div class="about-grid">
+      <div>
+        <p>
+          I'm currently pursuing a degree in physics, with a focus that keeps drifting
+          toward computational methods — molecular dynamics, numerical simulation, and
+          the places where quantum mechanics quietly hands off to classical intuition.
+          Outside of coursework I like turning lab write-ups into something closer to a
+          real research note than a homework assignment.
+        </p>
+        <p>
+          Edit this paragraph with your own background: where you study, what year
+          you're in, and what part of physics you keep coming back to.
+        </p>
+      </div>
+      <ul class="field-list">
+        <li><span>Institution</span><span>Your university name</span></li>
+        <li><span>Focus</span><span>Computational &amp; quantum physics</span></li>
+        <li><span>Tools</span><span>Python · C++ · LaTeX</span></li>
+        <li><span>Email</span><span>you@example.com</span></li>
+        <li><span>GitHub</span><span><a href="https://github.com/guiposchew">guiposchew</a></span></li>
+      </ul>
+    </div>
+    <p class="note">Note: the About text and the field list above are placeholders — swap in your own bio, university and links before publishing.</p>
+  </section>
+
+  <section class="block">
+    <div class="section-head">
+      <h2>Recent reports</h2>
+      <span class="tally">05 documents on file</span>
+    </div>
+    <ul class="doc-list">
+      <li class="doc-item">
+        <span class="doc-no">01</span>
+        <div class="doc-body">
+          <span class="course-tag">Molecular Dynamics</span>
+          <h3>Ideal Gas Law — Molecular Dynamics</h3>
+          <p>Simulation-based look at how the ideal gas law emerges from particle-level dynamics.</p>
+        </div>
+        <div class="doc-action">
+          <a href="https://guiposchew.github.io/pdfs/ideal_gas.pdf" target="_blank" rel="noopener">View PDF ↗</a>
+        </div>
+      </li>
+      <li class="doc-item">
+        <span class="doc-no">02</span>
+        <div class="doc-body">
+          <span class="course-tag">Quantum Foundations</span>
+          <h3>Exploration into the boundary between Quantum and Classical physics</h3>
+          <p>An essay on the correspondence principle and where classical behaviour re-emerges.</p>
+        </div>
+        <div class="doc-action">
+          <a href="https://guiposchew.github.io/pdfs/Correspondence_Principle.pdf" target="_blank" rel="noopener">View PDF ↗</a>
+        </div>
+      </li>
+    </ul>
+    <p style="margin-top: 22px;"><a class="btn" href="reports.html">View all essays &amp; reports</a></p>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>© <span id="year"></span> Guilherme Schewtschik</span>
+    <div class="foot-links">
+      <a href="https://github.com/guiposchew" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:you@example.com">Email</a>
+    </div>
+  </div>
+</footer>
+
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
