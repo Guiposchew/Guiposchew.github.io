@@ -1,6 +1,4 @@
 // Oscilloscope-style hero trace.
-// Draws a slowly evolving interference pattern (two summed waves),
-// evoking a lab instrument readout without being decorative for its own sake.
 (function () {
   const canvas = document.getElementById("scope");
   if (!canvas) return;
@@ -12,8 +10,8 @@
 
   function resize() {
     dpr = window.devicePixelRatio || 1;
-    width = canvas.clientWidth;
-    height = canvas.clientHeight;
+    width = canvas.clientWidth || 300;
+    height = canvas.clientHeight || 150;
     canvas.width = width * dpr;
     canvas.height = height * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -22,16 +20,17 @@
   window.addEventListener("resize", resize);
   resize();
 
-  const accent = getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#3f7d6e";
-  const brass = getComputedStyle(document.documentElement).getPropertyValue("--brass").trim() || "#a8763c";
-  const line = getComputedStyle(document.documentElement).getPropertyValue("--paper-line").trim() || "#d7dfdd";
+  const style = getComputedStyle(document.documentElement);
+  const accent = style.getPropertyValue("--accent").trim() || "#3f7d6e";
+  const brass = style.getPropertyValue("--brass").trim() || "#a8763c";
+  const line = style.getPropertyValue("--paper-line").trim() || "#d7dfdd";
 
   let t = 0;
 
   function draw() {
     ctx.clearRect(0, 0, width, height);
 
-    // baseline grid ticks
+    // Baseline grid ticks
     ctx.strokeStyle = line;
     ctx.lineWidth = 1;
     for (let x = 0; x < width; x += 40) {
@@ -43,7 +42,7 @@
 
     const midY = height / 2;
 
-    // primary trace — a beating pattern from two close frequencies (accent)
+    // Primary trace — beating pattern
     ctx.beginPath();
     ctx.strokeStyle = accent;
     ctx.lineWidth = 2;
@@ -58,7 +57,7 @@
     }
     ctx.stroke();
 
-    // secondary faint trace (brass) — slight phase offset, lower amplitude
+    // Secondary trace
     ctx.beginPath();
     ctx.strokeStyle = brass;
     ctx.globalAlpha = 0.55;
@@ -76,7 +75,7 @@
   }
 
   if (prefersReduced) {
-    draw(); // static single frame
+    draw();
   } else {
     (function loop() {
       draw();
@@ -85,12 +84,13 @@
   }
 })();
 
+// Document & Project Loader
 (function () {
   const dataPath = "assets/data/projects.json";
 
   function formatDate(dateString) {
     const date = new Date(dateString);
-    if (Number.isNaN(date)) return "";
+    if (Number.isNaN(date.getTime())) return "";
     return date.toLocaleDateString(undefined, { year: "numeric", month: "short" });
   }
 
@@ -149,7 +149,7 @@
 
     if (!items.length) {
       if (countId) setText(countId, "0 entries");
-      container.innerHTML = `<div class="card placeholder"><span class="tag">No project entries yet</span><h3>${emptyMessage}</h3><p>Add entries to <code>assets/data/projects.json</code> and place the PDF in <code>/pdfs/</code>.</p></div>`;
+      container.innerHTML = `<div class="card placeholder"><span class="tag">No project entries yet</span><h3>${emptyMessage}</h3></div>`;
       return;
     }
 
@@ -157,30 +157,37 @@
     container.innerHTML = items.map(createProjectCard).join("");
   }
 
-  function hydratePage(data) {
+function hydratePage(data) {
     const docs = Array.isArray(data) ? data.slice() : [];
 
     docs.forEach((item) => {
       item.__date = new Date(item.date);
     });
 
+    // 1. Sort all items chronologically (newest first)
     docs.sort((a, b) => b.__date - a.__date || a.title.localeCompare(b.title));
 
-    const projectDocs = docs.filter((item) => item.category === "project");
+    // 2. Filter out reports and projects
     const reportDocs = docs.filter((item) => item.category === "report");
+    const projectDocs = docs.filter((item) => item.category === "project");
 
+    // 3. Populate Recent Reports on the index page (Top 2 latest reports)
     const recentDocsList = document.getElementById("recent-docs-list");
     if (recentDocsList) {
-      const recent = projectDocs.slice(0, 2);
-      if (recent.length) {
-        setText("recent-count", `${recent.length} latest projects`);
-        recentDocsList.innerHTML = recent.map((item, idx) => createDocListItem(item, idx + 1)).join("");
+      const recentReports = reportDocs.slice(0, 2); // Takes the 2 newest reports
+
+      if (recentReports.length) {
+        setText("recent-count", `${recentReports.length} latest reports`);
+        recentDocsList.innerHTML = recentReports
+          .map((item, idx) => createDocListItem(item, idx + 1))
+          .join("");
       } else {
-        renderList("recent-docs-list", "recent-count", [], "No recent projects found.");
+        renderList("recent-docs-list", "recent-count", [], "No recent reports found.");
       }
     }
 
-    renderList("report-docs-list", "report-count", reportDocs, "No reports found. Add items with category 'report'.");
+    // 4. Render dedicated sections on reports.html and projects.html
+    renderList("report-docs-list", "report-count", reportDocs, "No reports found.");
     renderProjects("project-card-grid", "project-count", projectDocs, "No project documents found yet.");
   }
 
@@ -192,9 +199,7 @@
 
   fetch(dataPath)
     .then((response) => {
-      if (!response.ok) {
-        throw new Error(`Unable to fetch ${dataPath}: ${response.status}`);
-      }
+      if (!response.ok) throw new Error(`Unable to fetch ${dataPath}: ${response.status}`);
       return response.json();
     })
     .then(hydratePage)
