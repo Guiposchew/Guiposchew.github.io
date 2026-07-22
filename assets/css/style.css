@@ -272,13 +272,13 @@ section.block + section.block { border-top: 1px solid var(--line); }
   border-bottom: 1px solid var(--line);
   padding: 18px 0;
   display: grid;
-  grid-template-columns: 42px 72px minmax(0, 1fr) auto;
+  grid-template-columns: 42px 88px minmax(0, 1fr) auto;
   gap: 16px;
   align-items: start;
 }
 .doc-item:first-child { border-top: 1px solid var(--line); }
 @media (max-width: 840px) {
-  .doc-item { grid-template-columns: 42px 72px minmax(0, 1fr); gap: 12px; }
+  .doc-item { grid-template-columns: 42px 88px minmax(0, 1fr); gap: 12px; }
 }
 @media (max-width: 640px) {
   .doc-item { grid-template-columns: 1fr; gap: 8px; }
@@ -290,9 +290,9 @@ section.block + section.block { border-top: 1px solid var(--line); }
   padding-top: 4px;
 }
 .doc-thumb {
-  width: 72px;
-  min-width: 72px;
-  height: 72px;
+  width: 88px;
+  min-width: 88px;
+  height: 88px;
   border-radius: 4px;
   overflow: hidden;
   background: linear-gradient(180deg, #f9fafb, #e8ecef);
