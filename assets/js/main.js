@@ -97,8 +97,8 @@
 
   function createDocListItem(item, position) {
     const thumbMarkup = item.thumbnail
-      ? `<img src="${item.thumbnail}" alt="Thumbnail for ${item.title}" loading="lazy" />`
-      : `<div class="doc-thumb-fallback">PDF</div>`;
+      ? `<img src="${item.thumbnail}" alt="Thumbnail for ${item.title}" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('broken');" />`
+      : "";
 
     return `
       <li class="doc-item">

@@ -272,13 +272,13 @@ section.block + section.block { border-top: 1px solid var(--line); }
   border-bottom: 1px solid var(--line);
   padding: 18px 0;
   display: grid;
-  grid-template-columns: 42px 88px minmax(0, 1fr) auto;
-  gap: 16px;
+  grid-template-columns: 42px 108px minmax(0, 1fr) auto;
+  gap: 18px;
   align-items: start;
 }
 .doc-item:first-child { border-top: 1px solid var(--line); }
 @media (max-width: 840px) {
-  .doc-item { grid-template-columns: 42px 88px minmax(0, 1fr); gap: 12px; }
+  .doc-item { grid-template-columns: 42px 108px minmax(0, 1fr); gap: 14px; }
 }
 @media (max-width: 640px) {
   .doc-item { grid-template-columns: 1fr; gap: 8px; }
@@ -290,15 +290,23 @@ section.block + section.block { border-top: 1px solid var(--line); }
   padding-top: 4px;
 }
 .doc-thumb {
-  width: 88px;
-  min-width: 88px;
-  height: 88px;
+  width: 108px;
+  min-width: 108px;
+  height: 108px;
   border-radius: 4px;
   overflow: hidden;
   background: linear-gradient(180deg, #f9fafb, #e8ecef);
   border: 1px solid var(--line);
   display: grid;
   place-items: center;
+}
+.doc-thumb.broken::after {
+  content: "PDF";
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
 }
 .doc-thumb img {
   width: 100%;
