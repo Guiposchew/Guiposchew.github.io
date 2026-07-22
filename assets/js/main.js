@@ -76,14 +76,13 @@
   }
 
   if (prefersReduced) {
-      draw(); // static single frame
-    } else {
-      (function loop() {
-        draw();
-        requestAnimationFrame(loop);
-      })();
-    }
-  })();
+    draw(); // static single frame
+  } else {
+    (function loop() {
+      draw();
+      requestAnimationFrame(loop);
+    })();
+  }
 })();
 
 (function () {
@@ -117,7 +116,7 @@
         <span class="tag">${item.course}</span>
         <h3>${item.title}</h3>
         <p>${item.description}</p>
-        <span class="meta">${formatDate(item.date)} · ${item.category === "project" ? "Project" : "Document"}</span>
+        <span class="meta">${formatDate(item.date)} · Project</span>
         <a class="card-link" href="${item.url}" target="_blank" rel="noopener">View PDF ↗</a>
       </article>
     `;
@@ -128,22 +127,17 @@
     if (el) el.textContent = value;
   }
 
-  function setInnerHTML(id, value) {
-    const el = document.getElementById(id);
-    if (el) el.innerHTML = value;
-  }
-
   function renderList(containerId, countId, items, emptyMessage) {
     const container = document.getElementById(containerId);
     if (!container) return;
 
     if (!items.length) {
-      setText(countId, "0 documents on file");
+      if (countId) setText(countId, "0 documents on file");
       container.innerHTML = `<li class="doc-item doc-placeholder"><div class="doc-body"><h3>${emptyMessage}</h3></div></li>`;
       return;
     }
 
-    setText(countId, `${items.length} documents on file`);
+    if (countId) setText(countId, `${items.length} documents on file`);
     container.innerHTML = items
       .map((item, index) => createDocListItem(item, index + 1))
       .join("");
@@ -154,42 +148,44 @@
     if (!container) return;
 
     if (!items.length) {
-      setText(countId, "0 entries");
+      if (countId) setText(countId, "0 entries");
       container.innerHTML = `<div class="card placeholder"><span class="tag">No project entries yet</span><h3>${emptyMessage}</h3><p>Add entries to <code>assets/data/projects.json</code> and place the PDF in <code>/pdfs/</code>.</p></div>`;
       return;
     }
 
-    setText(countId, `${items.length} entries`);
+    if (countId) setText(countId, `${items.length} entries`);
     container.innerHTML = items.map(createProjectCard).join("");
   }
 
   function hydratePage(data) {
     const docs = Array.isArray(data) ? data.slice() : [];
+
     docs.forEach((item) => {
       item.__date = new Date(item.date);
     });
+
     docs.sort((a, b) => b.__date - a.__date || a.title.localeCompare(b.title));
+
+    const projectDocs = docs.filter((item) => item.category === "project");
+    const reportDocs = docs.filter((item) => item.category === "report");
 
     const recentDocsList = document.getElementById("recent-docs-list");
     if (recentDocsList) {
-      const recent = docs.slice(0, 3);
+      const recent = projectDocs.slice(0, 2);
       if (recent.length) {
-        setText("recent-count", `${recent.length} recent documents`);
+        setText("recent-count", `${recent.length} latest projects`);
         recentDocsList.innerHTML = recent.map((item, idx) => createDocListItem(item, idx + 1)).join("");
       } else {
-        renderList("recent-docs-list", "recent-count", [], "No recent documents found.");
+        renderList("recent-docs-list", "recent-count", [], "No recent projects found.");
       }
     }
 
-    const reportDocs = docs.filter((item) => item.category === "report");
     renderList("report-docs-list", "report-count", reportDocs, "No reports found. Add items with category 'report'.");
-
-    const projectDocs = docs.filter((item) => item.category === "project");
     renderProjects("project-card-grid", "project-count", projectDocs, "No project documents found yet.");
   }
 
   function showError() {
-    renderList("recent-docs-list", "recent-count", [], "Unable to load recent documents.");
+    renderList("recent-docs-list", "recent-count", [], "Unable to load recent projects.");
     renderList("report-docs-list", "report-count", [], "Unable to load reports.");
     renderProjects("project-card-grid", "project-count", [], "Unable to load project documents.");
   }
