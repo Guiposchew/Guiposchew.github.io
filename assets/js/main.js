@@ -86,7 +86,7 @@
 
 // Document & Project Loader
 (function () {
-  const dataPath = "assets/data/projects.json";
+  const dataPath = `assets/data/projects.json?ts=${Date.now()}`;
   console.info("assets/js/main.js loaded: starting document loader");
 
   function formatDate(dateString) {
@@ -95,8 +95,27 @@
     return date.toLocaleDateString(undefined, { year: "numeric", month: "short" });
   }
 
+  function resolvePdfUrl(item) {
+    if (item.url && /^https?:\/\//i.test(item.url)) {
+      return item.url;
+    }
+
+    const pdfName = String(item.pdf || item.file || item.filename || item.url || "").trim();
+    if (!pdfName) {
+      return "#";
+    }
+
+    if (/^https?:\/\//i.test(pdfName)) {
+      return pdfName;
+    }
+
+    const cleaned = pdfName.replace(/^\/+/, "").replace(/^pdfs\/+/, "").replace(/^pdfs\//i, "");
+    return `https://guiposchew.github.io/pdfs/${cleaned}`;
+  }
+
   function createDocListItem(item, position) {
     const thumbSrc = item.thumbnail ? item.thumbnail.replace(/^\.\//, "") : "";
+    const pdfUrl = resolvePdfUrl(item);
     const thumbMarkup = thumbSrc
       ? `<img src="${thumbSrc}" alt="Thumbnail for ${item.title}" loading="lazy" onerror="this.style.display='none'; this.parentElement.classList.add('broken');" />`
       : "";
@@ -111,20 +130,21 @@
           <p>${item.description}</p>
         </div>
         <div class="doc-action">
-          <a href="${item.url}" target="_blank" rel="noopener">View PDF ↗</a>
+          <a href="${pdfUrl}" target="_blank" rel="noopener">View PDF ↗</a>
         </div>
       </li>
     `;
   }
 
   function createProjectCard(item) {
+    const pdfUrl = resolvePdfUrl(item);
     return `
       <article class="card">
         <span class="tag">${item.course}</span>
         <h3>${item.title}</h3>
         <p>${item.description}</p>
         <span class="meta">${formatDate(item.date)} · Project</span>
-        <a class="card-link" href="${item.url}" target="_blank" rel="noopener">View PDF ↗</a>
+        <a class="card-link" href="${pdfUrl}" target="_blank" rel="noopener">View PDF ↗</a>
       </article>
     `;
   }
