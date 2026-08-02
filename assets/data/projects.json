@@ -38,5 +38,16 @@
     "description": "A summary of the Electronic experiments done at the Labs II course.",
     "url": "https://guiposchew.github.io/pdfs/Report_Electronic_Labs.pdf",
     "thumbnail": "assets/images/e_lab.png"
+  },
+  {
+    "id":"05",
+    "title": "The Kitaev chain and its topological properties",
+    "course": "Advanced Seminar: Topics in Theoretical Physics",
+    "category": "report",
+    "date": "2026-08-02",
+    "description": "A summary of the first Block of the Quantum Project.",
+    "url": "https://guiposchew.github.io/pdfs/Kitaev_chain.pdf",
+    "thumbnail": "assets/images/kitaev_chain.png"
   }
+
 ]
